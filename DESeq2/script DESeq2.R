@@ -1,3 +1,4 @@
+#abrí un proyecto nuevo dentro del directorio donde tenía los archivos, por eso no establecí un directorio
 BiocManager::install("DESeq2")
 BiocManager::install("tximport")
 install.packages("ggrepel")
