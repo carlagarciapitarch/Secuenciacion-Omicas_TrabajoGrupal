@@ -85,6 +85,24 @@ print(paste("Genes subexpresados:", genes_down))
 #se transforman los datos para la visualización
 rld <- rlog(dds, blind = FALSE)
 
+#MA plot
+pdf("MA_plot.pdf", width = 8, height = 6)
+plotMA(res, ylim = c(-5, 5), main = "MA Plot - Obeso vs Normopeso")
+dev.off()
+
+# Versión con ggplot2
+ggplot(as.data.frame(res), aes(x = baseMean, y = log2FoldChange)) +
+  geom_point(aes(color = padj < 0.05), alpha = 0.5) +
+  scale_x_log10() +
+  scale_color_manual(values = c("grey", "red")) +
+  theme_minimal() +
+  labs(title = "MA Plot", 
+       x = "Mean Expression", 
+       y = "Log2 Fold Change",
+       color = "Significativo\n(padj < 0.05)")
+
+ggsave("MA_plot_ggplot.pdf", width = 8, height = 6)
+
 #hacemos volcano plot
 res_df <- as.data.frame(res)
 res_df$gene <- rownames(res_df)
