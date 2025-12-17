@@ -154,7 +154,7 @@ rownames(annotation_col) <- samples$sampleName
 pheatmap(
   logCPM_scaled, 
   cluster_rows = TRUE, 
-  show_rownames = FALSE, # Si hay muchos genes, oculte los nombres de fila
+  show_rownames = TRUE, # Si hay muchos genes, oculte los nombres de fila
   cluster_cols = TRUE, 
   annotation_col = annotation_col,
   main = "Heatmap de Genes Diferencialmente Expresados (Obeso 2 vs Normopeso)",
