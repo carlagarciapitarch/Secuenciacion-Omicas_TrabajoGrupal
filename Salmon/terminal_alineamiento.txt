@@ -1,0 +1,36 @@
+ ### como se tratan de transcritos de determinados genes generados para esta actividad y no secuenciacion de todos los genes, vamos a realizar un pseudoalineamiento con Salmon. Para ello utilizaremos los archivos filtrados obtenidos despues de realizar el control de calidad con FastQC y el preprocesamiento con Fastp.
+ 
+ # aqui he creado el entorno y para trabajar con salmon necesito conda-forge, bioconda y salmon con otras cosas (de ahi defaults)
+ (base) carla@carla-IdeaPad-Slim-3-15ABR8:~$ conda create -n alineamiento_act_grupal_omicas -c conda-forge -c bioconda -c defaults salmon
+ 
+ # he indexado la referencia
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon index -t Referencia.fasta -i index
+ 
+ # Ahora voy a alinear los archivos (los tengo en Trimmed porque eran los que he obtenido despues del pre-procesamiento)
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/BartSimpson_R1_filtered.fastq.gz -2 Trimmed/BartSimpson_R2_filtered.fastq.gz -p 8 -o Salmon/BartSimpson
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/LisaSimpson_R1_filtered.fastq.gz -2 Trimmed/LisaSimpson_R2_filtered.fastq.gz -p 8 -o Salmon/LisaSimpson
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/MaggieSimpson_R1_filtered.fastq.gz -2 Trimmed/MaggieSimpson_R2_filtered.fastq.gz -p 8 -o Salmon/MaggieSimpson
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/MargeSimpson_R1_filtered.fastq.gz -2 Trimmed/MargeSimpson_R2_filtered.fastq.gz -p 8 -o Salmon/MargeSimpson
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/PattyBouvier_R1_filtered.fastq.gz -2 Trimmed/PattyBouvier_R2_filtered.fastq.gz -p 8 -o Salmon/PattyBouvier
+ 
+ (alineamiento_act_grupal_omicas) carla@carla-IdeaPad-Slim-3-15ABR8:~/Documentos/MasterBioinformatica/1Q/Secuenciacion_Omicas/Actividades/Actividad grupal/Resolucion_Act_Grupal$ salmon quant -i index -l A -1 Trimmed/SelmaBouvier_R1_filtered.fastq.gz -2 Trimmed/SelmaBouvier_R2_filtered.fastq.gz -p 8 -o Salmon/SelmaBouvier
+ 
+ # Esto genera carpetas para cada persona y un fichero quant.sf que es el importante para cargar en R
+
+
+
+
+
+
+
+
+
+
+
+
+
